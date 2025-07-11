@@ -1,101 +1,62 @@
-import Image from "next/image";
+"use client"
+import React, { useState } from 'react'
 
-export default function Home() {
+const page = () => {
+  const [title, setTitle] = useState("")
+  const [desc, setDesc] = useState("")
+  const [todolist, setTodolist] = useState([])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setTodolist([...todolist, { title, desc }])
+    setDesc("")
+    setTitle("")
+    console.log(todolist);
+  }
+
+  const deleteHandler = (i) => {
+    let copytodo = [...todolist]
+    copytodo.splice(i,1)
+    setTodolist(copytodo)
+  }
+
+  let renderTodo = <h2 className='text-center text-4xl'>No Todo Assigned...</h2>
+  
+  if (todolist.length>0) {
+    renderTodo = todolist.map((todo,i)=>{
+      return <li key={i} className='flex items-center justify-between mb-3'>
+        <div className='flex justify-between w-2/3'>
+        <h3 className='w-2/3 text-xl font-bold'>{todo.title}</h3>
+        <h5 className='w-1/2 flex-wrap'>{todo.desc}</h5>
+        <svg onClick={()=>{
+          deleteHandler(i)
+        }} className='cursor-pointer' xmlns="http://www.w3.org/2000/svg" width={30} height={30} viewBox="0 0 24 24" fill="currentColor"><path d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z"></path></svg>  
+      </div>
+      </li>
+    })
+  }
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div>
+      <>
+      <h1 className='text-5xl bg-cyan-300 text-white font-bold p-5 text-center'>Mahim's Todo List</h1>
+      <form onSubmit={handleSubmit  }>
+        <input className='border-2 rounded-xl border-black m-10 px-5 py-2' type="text" placeholder='Add Todo Title' value={title} 
+        onChange={(e)=>{
+          setTitle(e.target.value)
+        }}/>
+        <input className='border-2 rounded-xl border-black m-10 px-5 py-2' type="text" placeholder='Add Todo Description' value={desc} onChange={(e)=>{
+          setDesc(e.target.value)
+        }}/>
+        <button className='bg-blue-600 px-4 font-bold py-2 text-xl m-10 rounded-xl text-white hover:bg-blue-300'>Add</button>
+      </form>
+      <hr />
+      <div className="p-8 bg-slate-400">
+        {renderTodo}
+      </div>
+      </>
     </div>
-  );
+  )
 }
+
+export default page
