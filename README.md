@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ✅ TaskTopia
 
-## Getting Started
+**TaskTopia** is your personal productivity haven — where tasks meet clarity and chaos turns into completion.  
+Organize, prioritize, and conquer your to-do list with a clean and intuitive interface.
 
-First, run the development server:
+---
+
+## 🌟 Features
+
+- 📋 Add, edit, and delete tasks easily
+- ✅ Mark tasks as completed
+- 🕒 Organize tasks by due date or priority
+- 🌓 Light and Dark mode support
+- 🔍 Search and filter tasks
+- 💾 Persistent data (localStorage or backend API)
+- 🔔 Optional notifications/reminders
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend**:
+- React.js (with Hooks)
+- Tailwind CSS (or any styling method of your choice)
+
+**Backend** (optional):
+- Node.js + Express
+- MongoDB or JSON-server for mock APIs
+
+---
+
+## 📁 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+TaskTopia/
+├── backend/
+│   ├── server.js               # Express server setup
+│   └── routes/                 # API routes (if backend used)
+│
+├── frontend/
+│   ├── public/
+│   └── src/
+│       ├── components/         # Reusable UI components
+│       ├── pages/              # Task views
+│       ├── App.js              # Root component
+│       └── index.js            # Entry point
+│
+├── .gitignore
+├── README.md
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Clone the repository
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+git clone https://github.com/yourusername/tasktopia.git
+cd tasktopia
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🛠️ Install frontend dependencies
 
-## Learn More
+```bash
+cd frontend
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Start the frontend
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+npm run dev  # or npm start
+```
