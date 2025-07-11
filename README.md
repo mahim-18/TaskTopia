@@ -7,13 +7,8 @@ Organize, prioritize, and conquer your to-do list with a clean and intuitive int
 
 ## 🌟 Features
 
-- 📋 Add, edit, and delete tasks easily
-- ✅ Mark tasks as completed
-- 🕒 Organize tasks by due date or priority
-- 🌓 Light and Dark mode support
-- 🔍 Search and filter tasks
-- 💾 Persistent data (localStorage or backend API)
-- 🔔 Optional notifications/reminders
+- 📋 Add, and delete tasks easily
+- ✅ Delete tasks as completed
 
 ---
 
@@ -23,20 +18,12 @@ Organize, prioritize, and conquer your to-do list with a clean and intuitive int
 - React.js (with Hooks)
 - Tailwind CSS (or any styling method of your choice)
 
-**Backend** (optional):
-- Node.js + Express
-- MongoDB or JSON-server for mock APIs
-
 ---
 
 ## 📁 Project Structure
 
 ```bash
 TaskTopia/
-├── backend/
-│   ├── server.js               # Express server setup
-│   └── routes/                 # API routes (if backend used)
-│
 ├── frontend/
 │   ├── public/
 │   └── src/
